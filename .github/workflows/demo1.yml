@@ -1,5 +1,21 @@
 name: Events Demo 1
-on: ...
+on:
+  issues:
+    types: 
+     - opened
+  pull_request:
+    types:
+      - opened
+    branches: 
+      - main
+      - 'dev-*' #All branches starting with dev-
+      - 'feat/**' #All branches starting with feat and more slashes at the end
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '.github/workflows/**'
+  workflow_dispatch: 
 jobs:
   deploy:
     runs-on: ubuntu-latest
